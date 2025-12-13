@@ -1,0 +1,25 @@
+Extension method — lets you add a method to an existing type (like IServiceCollection) so you can call it as if it were native to that type.
+
+IServiceCollection — a .NET object used at startup to register services into the DI container.
+
+IConfiguration — object that gives access to configuration settings (like connection strings from appsettings.json).
+
+DbContext — Entity Framework Core (EF Core) object that represents the database and lets you query/save data.
+
+UseNpgsql — EF Core method that tells the DbContext to use PostgreSQL as the database engine.
+
+MigrationsAssembly — the assembly (compilation unit) where EF Core will look for migration code (database schema changes).
+
+Scoped lifetime — a service lifetime meaning "one instance per web request" (common for DbContext).
+Lifetime: Scoped vs Transient vs Singleton
+
+	Scoped: one instance per request (typical for DbContext).
+
+	Transient: a new instance every time requested.
+
+	Singleton: one instance for the entire application lifetime.
+
+Generic type notation <T> — used to specify types like AddDbContext<CarRentalDbContext>.
+
+Dependency Injection (DI) — a pattern where objects ask a central container for the things they need instead of creating them themselves.
+Instead of new CarRentalDbContext() inside your classes, you say in the constructor CarRentalDbContext db and the framework provides it automatically. That makes testing and maintenance easier.
